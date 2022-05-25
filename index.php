@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 
 <head>
   <!-- jQuery -->
@@ -17,8 +17,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <label>Список :</label>
-        <input type="text" name="name" id="search_name" placeholder="Type to search..." class="form-control">
+        <label>Список:</label>
+        <input type="text" name="city" id="search_city" placeholder="Type to search..." class="form-control">
 
       </div>
     </div>
@@ -26,8 +26,14 @@
 
   <script type="text/javascript">
     $(function() {
-      $("#search_name").autocomplete({
-        source: 'autocomplete.php',
+      $("#search_city").autocomplete({
+        source: './load/autocomplete.php',
+        delay: 500,
+        select: function(e, ui) {
+          if (ui.item.value === 'Нет совпадений') {
+            ui.item.value = '';
+          }
+        },
       });
     });
   </script>
